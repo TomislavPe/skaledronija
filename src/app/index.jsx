@@ -1,12 +1,7 @@
-import './App.css'
+import "./App.css";
 
 function App() {
-
-  return (
-    <>
-test
-    </>
-  )
+	return <>{import.meta.env.VITE_TEST_DATA}</>;
 }
 
-export default App
+export default App;
