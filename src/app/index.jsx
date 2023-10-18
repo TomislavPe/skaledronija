@@ -1,8 +1,14 @@
 import "./App.css";
+import scaledrone from "./features/scaledroneApi";
 
 function App() {
-	return <>{import.meta.env.VITE_CHANNEL_ID}
-	{import.meta.env.VITE_SECRET_KEY}</>;
+	scaledrone();
+	
+	return (
+		<>
+			<div>test</div>
+		</>
+	);
 }
 
 export default App;
