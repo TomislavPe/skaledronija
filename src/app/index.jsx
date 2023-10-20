@@ -4,9 +4,10 @@ import * as scaledrone from "./features/scaledroneApi";
 function App() {
 	scaledrone.connect();
 
-	const handleMessage = (message) => { console.log("message received: ", message) }
+	const handleMessage = (message) => { console.log("message received: ", message.data) }
 
-	scaledrone.subscribe(handleMessage);
+	scaledrone.subscribeToMessages(handleMessage);
+	
 	
 	return (
 		<>
