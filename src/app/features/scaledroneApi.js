@@ -1,7 +1,14 @@
 const scaledrone = window.Scaledrone;
+const channelId = import.meta.env.VITE_CHANNEL_ID;
+let drone;
 
-const test = () => {
-	console.log(scaledrone);
+export const connect = () => {
+	drone = new scaledrone(channelId);
 };
 
-export default test;
+export const subscribe = (callback) => {
+	drone.on("open", (error) => {
+		const room = drone.subscribe("observable-room");
+		room.on("data", callback);
+	});
+};

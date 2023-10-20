@@ -1,8 +1,12 @@
 import "./App.css";
-import scaledrone from "./features/scaledroneApi";
+import * as scaledrone from "./features/scaledroneApi";
 
 function App() {
-	scaledrone();
+	scaledrone.connect();
+
+	const handleMessage = (message) => { console.log("message received: ", message) }
+
+	scaledrone.subscribe(handleMessage);
 	
 	return (
 		<>
