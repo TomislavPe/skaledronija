@@ -6,12 +6,15 @@ function App() {
 
 	const handleMessage = (message) => { console.log("message received: ", message.data) }
 
+	const sendMessage = (message) => { scaledrone.publishMessage("testni mesag") }
+
 	scaledrone.subscribeToMessages(handleMessage);
-	
+
 	
 	return (
 		<>
 			<div>test</div>
+			<button onClick={sendMessage}>Test message</button>
 		</>
 	);
 }
