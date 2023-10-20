@@ -4,7 +4,7 @@ import * as scaledrone from "./features/scaledroneApi";
 function App() {
 	scaledrone.connect();
 
-	const handleMessage = (message) => { console.log("message received: ", message.data) }
+	const handleMessage = (message) => { console.log("message received: ", message) }
 
 	const sendMessage = (message) => { scaledrone.publishMessage("testni mesag") }
 
