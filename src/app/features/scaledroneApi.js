@@ -22,3 +22,7 @@ export const publishMessage = (message) => {
 		message: message,
 	});
 };
+
+export const disconnect = () => {
+	drone.close();
+};
