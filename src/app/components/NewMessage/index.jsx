@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-const NewMessage = () => {
+const NewMessage = ({sendMessageCallback}) => {
 	const [newMessage, setNewMessage] = useState("");
 
 	const handleNewMessageChange = (event) => {
 		console.log(event.target.value);
-        setNewMessage(event.target.value);
+		setNewMessage(event.target.value);
 		return true;
 	};
 
 	const handleSendMessage = (event) => {
-		console.log("poslana poruka: ", newMessage);
+		sendMessageCallback(newMessage);
 		event.preventDefault();
 	};
 
