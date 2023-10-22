@@ -1,20 +1,21 @@
 import "./App.css";
 import * as scaledrone from "./features/scaledroneApi";
+import NewMessage from "./components/NewMessage";
 
 function App() {
-	scaledrone.connect();
+	// scaledrone.connect();
 
-	const handleMessage = (message) => { console.log("message received: ", message) }
+	// const handleMessage = (message) => { console.log("message received: ", message) }
 
-	const sendMessage = (message) => { scaledrone.publishMessage("testni mesag") }
+	// const sendMessage = (message) => { scaledrone.publishMessage("testni mesag") }
 
-	scaledrone.subscribeToMessages(handleMessage);
+	// scaledrone.subscribeToMessages(handleMessage);
 
 	
 	return (
 		<>
-			<div>test</div>
-			<button onClick={sendMessage}>Test message</button>
+			<h1>test</h1>
+			<NewMessage/>
 		</>
 	);
 }
