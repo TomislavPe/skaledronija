@@ -1,21 +1,30 @@
 import "./App.css";
+import { useEffect } from "react";
 import * as scaledrone from "./features/scaledroneApi";
 import NewMessage from "./components/NewMessage";
 
 function App() {
-	// scaledrone.connect();
+	const handleReceivedMessage = (message) => {
+		console.log("message received: ", message);
+	};
 
-	// const handleMessage = (message) => { console.log("message received: ", message) }
+	const sendMessage = (message) => {
+		scaledrone.publishMessage(message);
+	};
 
-	// const sendMessage = (message) => { scaledrone.publishMessage("testni mesag") }
+	useEffect(() => {
+		scaledrone.connect();
+		scaledrone.subscribeToMessages(handleReceivedMessage);
 
-	// scaledrone.subscribeToMessages(handleMessage);
+		return () => {
+			scaledrone.disconnect();
+		};
+	}, []);
 
-	
 	return (
 		<>
 			<h1>test</h1>
-			<NewMessage/>
+			<NewMessage />
 		</>
 	);
 }
