@@ -11,11 +11,11 @@ const NewMessage = ({ sendMessageCallback }) => {
 	const handleNewMessageChange = (event) => {
 		console.log(event.target.value);
 		setNewMessage(event.target.value);
-		return true;
 	};
-
+	
 	const handleSendMessage = (event) => {
 		sendMessageCallback(newMessage);
+		setNewMessage("");
 		event.preventDefault();
 	};
 
@@ -27,7 +27,7 @@ const NewMessage = ({ sendMessageCallback }) => {
 						type="text"
 						value={newMessage}
 						onChange={handleNewMessageChange}
-						placeholder="Type your message here"
+						placeholder="Upišite poruku ovdje"
 					/>
 				</Col>
 				<Col>
