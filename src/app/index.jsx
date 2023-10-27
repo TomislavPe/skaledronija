@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect } from "react";
 import * as scaledrone from "./features/scaledroneApi";
 import NewMessage from "./components/NewMessage";
+import ChatWindow from "./components/ChatWindow";
 
 function App() {
 	const handleReceivedMessage = (message) => {
@@ -24,7 +25,8 @@ function App() {
 	return (
 		<>
 			<h1>test</h1>
-			<NewMessage sendMessageCallback={sendMessage}/>
+			<ChatWindow />
+			<NewMessage sendMessageCallback={sendMessage} />
 		</>
 	);
 }
