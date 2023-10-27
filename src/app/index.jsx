@@ -1,11 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as scaledrone from "./features/scaledroneApi";
 import NewMessage from "./components/NewMessage";
 import ChatMessages from "./components/ChatMessages";
 
 function App() {
+	const [messages, setMessages] = useState([]);
+
+	const addMessage = (message) => {
+		setMessages((prevMessages) => {
+			return [...prevMessages, message];
+		});
+	};
+
 	const handleReceivedMessage = (message) => {
-		console.log("message received: ", message);
+		addMessage(message);
 	};
 
 	const sendMessage = (message) => {
@@ -24,7 +32,7 @@ function App() {
 
 	return (
 		<>
-			<ChatMessages />
+			<ChatMessages messages={messages} />
 			<NewMessage sendMessageCallback={sendMessage} />
 		</>
 	);

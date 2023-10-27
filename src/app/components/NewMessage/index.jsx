@@ -9,7 +9,6 @@ const NewMessage = ({ sendMessageCallback }) => {
 	const [newMessage, setNewMessage] = useState("");
 
 	const handleNewMessageChange = (event) => {
-		console.log(event.target.value);
 		setNewMessage(event.target.value);
 	};
 	
