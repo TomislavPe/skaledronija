@@ -1,8 +1,12 @@
 const scaledrone = window.Scaledrone;
 const channelId = import.meta.env.VITE_CHANNEL_ID;
-const clientInfo = { data: { name: "test korisnik", color: "red" } };
+let clientInfo = {};
 const roomName = "observable-room";
 let drone;
+
+export const setUserInfo = (name, color) => {
+	clientInfo = { data: { name: name, color: color } };
+};
 
 export const connect = () => {
 	drone = new scaledrone(channelId, clientInfo);

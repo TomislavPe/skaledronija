@@ -14,6 +14,7 @@ function App() {
 	};
 
 	useEffect(() => {
+		scaledrone.setUserInfo("test korisnik", "green");
 		scaledrone.connect();
 		scaledrone.subscribeToMessages(handleReceivedMessage);
 
