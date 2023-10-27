@@ -1,6 +1,11 @@
 import { useState } from "react";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-const NewMessage = ({sendMessageCallback}) => {
+const NewMessage = ({ sendMessageCallback }) => {
 	const [newMessage, setNewMessage] = useState("");
 
 	const handleNewMessageChange = (event) => {
@@ -15,14 +20,23 @@ const NewMessage = ({sendMessageCallback}) => {
 	};
 
 	return (
-		<form onSubmit={handleSendMessage}>
-			<input
-				type="text"
-				value={newMessage}
-				onChange={handleNewMessageChange}
-			/>
-			<input type="submit" value="Pošalji" />
-		</form>
+		<Form onSubmit={handleSendMessage}>
+			<Row>
+				<Col>
+					<FormControl
+						type="text"
+						value={newMessage}
+						onChange={handleNewMessageChange}
+						placeholder="Type your message here"
+					/>
+				</Col>
+				<Col>
+					<Button type="submit" variant="primary">
+						Pošalji
+					</Button>
+				</Col>
+			</Row>
+		</Form>
 	);
 };
 
