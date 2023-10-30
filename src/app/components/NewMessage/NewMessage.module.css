@@ -1,11 +1,27 @@
 .centerContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr; /* Single column for the container */
 	align-items: center;
 	border: 3px solid darkgray;
 	border-radius: 20px;
 	background-color: #333;
 	min-height: 20vh;
-	min-width: 100vw;
+	min-width: 80vw;
+	padding: 10px;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.formControl {
+	flex: 1;
+}
+
+.button {
+	width: auto;
+	max-width: 100px;
 }

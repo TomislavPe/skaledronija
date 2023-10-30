@@ -1,18 +1,17 @@
-import ListGroup from "react-bootstrap/ListGroup";
 import styles from "./ChatMessages.module.css";
 
 const ChatMessages = ({ messages }) => {
 	return (
 		<div className={styles.chatMessagesContainer}>
-			<ListGroup>
+			<ul>
 				{messages &&
 					messages.map((message) => (
-						<ListGroup.Item key={message.id}>
+						<li key={message.id}>
 							User:{message.member.clientData.name}, Message:{" "}
 							{message.data}
-						</ListGroup.Item>
+						</li>
 					))}
-			</ListGroup>
+			</ul>
 		</div>
 	);
 };

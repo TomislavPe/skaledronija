@@ -1,10 +1,5 @@
 import { useState } from "react";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import styles from "./NewMessage.module.css"
+import styles from "./NewMessage.module.css";
 
 const NewMessage = ({ sendMessageCallback }) => {
 	const [newMessage, setNewMessage] = useState("");
@@ -21,23 +16,20 @@ const NewMessage = ({ sendMessageCallback }) => {
 
 	return (
 		<div className={styles.centerContainer}>
-			<Form onSubmit={handleSendMessage}>
-				<Row>
-					<Col>
-						<FormControl
-							type="text"
-							value={newMessage}
-							onChange={handleNewMessageChange}
-							placeholder="Upišite poruku ovdje"
-						/>
-					</Col>
-					<Col>
-						<Button type="submit" variant="primary">
-							Pošalji
-						</Button>
-					</Col>
-				</Row>
-			</Form>
+			<form onSubmit={handleSendMessage}>
+				<div className={styles.row}>
+					<input
+						type="text"
+						value={newMessage}
+						onChange={handleNewMessageChange}
+						placeholder="Upišite poruku ovdje"
+						className={styles.formControl}
+					/>
+					<button type="submit" className={styles.button}>
+						Pošalji
+					</button>
+				</div>
+			</form>
 		</div>
 	);
 };
