@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import * as scaledrone from "./features/scaledroneApi";
 import NewMessage from "./components/NewMessage";
 import ChatMessages from "./components/ChatMessages";
+import styles from "./app.module.css";
 
 function App() {
 	const [messages, setMessages] = useState([]);
@@ -31,10 +32,10 @@ function App() {
 	}, []);
 
 	return (
-		<>
+		<div className={styles.appContainer}>
 			<ChatMessages messages={messages} />
 			<NewMessage sendMessageCallback={sendMessage} />
-		</>
+		</div>
 	);
 }
 

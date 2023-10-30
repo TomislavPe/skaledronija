@@ -1,0 +1,8 @@
+.chatMessagesContainer {
+    border: 3px solid darkgray;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    height: 50vh;
+    min-width: 100vw;
+  }
