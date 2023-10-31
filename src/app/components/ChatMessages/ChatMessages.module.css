@@ -1,8 +1,44 @@
 .chatMessagesContainer {
-    border: 3px solid darkgray;
-    padding: 10px;
-    border-radius: 20px;
-    background-color: whitesmoke;
-    height: 50vh;
-    min-width: 80vw;
-  }
+	border: 3px solid darkgray;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: whitesmoke;
+	height: 50vh;
+	min-width: 80vw;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.messageList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+	padding: 0;
+}
+
+.message {
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	max-width: 70%;
+  color: white;
+}
+
+.leftMessage {
+	background-color: #e22c2c;
+	align-self: flex-start;
+}
+
+.rightMessage {
+	background-color: #4caf50;
+	align-self: flex-end;
+}
+
+.userName {
+	font-weight: bold;
+}
+
+.messageContent {
+	margin-top: 5px;
+}

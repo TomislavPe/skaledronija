@@ -1,17 +1,29 @@
+import React from "react";
 import styles from "./ChatMessages.module.css";
 import testMessages from "./testMessages";
 
-const ChatMessages = ({ messages }) => {
+const userName = "User 1"; // Replace with the local user's name
 
+const ChatMessages = ({ messages }) => {
 	return (
 		<div className={styles.chatMessagesContainer}>
-			<ul>
+			<ul className={styles.messageList}>
 				{messages &&
-					// messages.map((message) => (
 					testMessages.map((message) => (
-						<li key={message.id}>
-							User:{message.member.clientData.name}, Message:{" "}
-							{message.data}
+						<li
+							key={message.id}
+							className={`${styles.message} ${
+								message.member.clientData.name === userName
+									? styles.rightMessage
+									: styles.leftMessage
+							}`}
+						>
+							<div className={styles.userName}>
+								{message.member.clientData.name}
+							</div>
+							<div className={styles.messageContent}>
+								{message.data}
+							</div>
 						</li>
 					))}
 			</ul>

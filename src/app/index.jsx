@@ -8,6 +8,7 @@ function App() {
 	const [messages, setMessages] = useState([]);
 
 	const addMessage = (message) => {
+		console.log(message)
 		setMessages((prevMessages) => {
 			return [...prevMessages, message];
 		});
