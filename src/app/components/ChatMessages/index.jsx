@@ -17,6 +17,10 @@ const ChatMessages = ({ messages }) => {
 									? styles.rightMessage
 									: styles.leftMessage
 							}`}
+							style={{
+								backgroundColor:
+									message.member.clientData.color,
+							}}
 						>
 							<div className={styles.userName}>
 								{message.member.clientData.name}
