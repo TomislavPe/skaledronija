@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ChatMessages.module.css";
 import testMessages from "./testMessages";
 
-const userName = "User 1"; // Replace with the local user's name
+const userName = "User 1";
 
 const ChatMessages = ({ messages }) => {
 	return (

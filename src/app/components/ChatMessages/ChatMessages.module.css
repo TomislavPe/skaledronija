@@ -26,12 +26,10 @@
 }
 
 .leftMessage {
-	background-color: #e22c2c;
 	align-self: flex-start;
 }
 
 .rightMessage {
-	background-color: #4caf50;
 	align-self: flex-end;
 }
 
