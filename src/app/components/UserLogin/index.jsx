@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const UserLogin = ({ setUser }) => {
+const UserLogin = ({ login }) => {
 	const [userName, setUserName] = useState("");
 	const [userColor, setUserColor] = useState("");
 
@@ -14,7 +14,7 @@ const UserLogin = ({ setUser }) => {
 
 	const handleLogin = () => {
 		if (userName && userColor) {
-			setUser({ data: { name: userName, color: userColor } });
+			login(userName, userColor)
 		}
 	};
 

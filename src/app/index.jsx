@@ -7,23 +7,16 @@ import styles from "./app.module.css";
 
 function App() {
 	const [messages, setMessages] = useState([]);
-	// const [user, setUser] = useState({
-	// 	data: { name: "test korisnik", color: "green" },
-	// });
-	const [user, setUser] = useState(null);
 
-	const addMessage = (message) => {
+	const [user, setUser] = useState({
+		data: { name: "nema korisnika", color: "red" , id: null},
+	});
+	const [connected, setConnected] = useState(false);
+
+	const handleReceivedMessage = (message) => {
 		setMessages((prevMessages) => {
 			return [...prevMessages, message];
 		});
-	};
-
-	const handleReceivedMessage = (message) => {
-		addMessage(message);
-	};
-
-	const sendMessage = (message) => {
-		scaledrone.publishMessage(message);
 	};
 
 	const onConnect = () => {
@@ -35,26 +28,44 @@ function App() {
 				id: scaledrone.getUserId(),
 			},
 		});
+		setConnected(true);
+	};
+
+	const login = (username, color) => {
+		const newUser = {
+			data: { name: username, color: color },
+		};
+		setUser({
+			...user,
+			data: {
+				...user.data,
+				name: username,
+				color: color
+			},
+		});
+		scaledrone.setUserInfo(newUser);
+		scaledrone.connect(onConnect);
+	};
+
+	const sendMessage = (message) => {
+		scaledrone.publishMessage(message);
 	};
 
 	useEffect(() => {
-		scaledrone.setUserInfo(user);
-		scaledrone.connect(onConnect);
-
 		return () => {
 			scaledrone.disconnect();
 		};
-	}, [user]);
+	}, []);
 
 	return (
 		<div className={styles.appContainer}>
-			{messages && user ? (
+			{connected ? (
 				<>
 					<ChatMessages messages={messages} user={user} />
 					<NewMessage sendMessageCallback={sendMessage} />
 				</>
 			) : (
-				<UserLogin setUser={setUser}/>
+				<UserLogin login={login} />
 			)}
 		</div>
 	);
