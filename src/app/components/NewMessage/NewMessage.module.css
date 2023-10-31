@@ -19,9 +19,14 @@
 
 .formControl {
 	flex: 1;
+	padding: 10px;
+	border-radius: 10px;
 }
 
 .button {
+	padding: 10px;
+	border-radius: 10px;
 	width: auto;
 	max-width: 100px;
+	font-size: 1rem;
 }
