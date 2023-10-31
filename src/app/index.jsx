@@ -22,7 +22,6 @@ function App() {
 		scaledrone.setUserInfo("test korisnik", "green");
 		scaledrone.connect();
 		scaledrone.subscribeToMessages(handleReceivedMessage);
-		console.log("dsofh")
 
 		return () => {
 			scaledrone.disconnect();
