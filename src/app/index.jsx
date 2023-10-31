@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import * as scaledrone from "./features/scaledroneApi";
 import NewMessage from "./components/NewMessage";
 import ChatMessages from "./components/ChatMessages";
+import UserLogin from "./components/UserLogin";
 import styles from "./app.module.css";
 
 function App() {
 	const [messages, setMessages] = useState([]);
-	const [user, setUser] = useState({
-		data: { name: "test korisnik", color: "green" },
-	});
+	// const [user, setUser] = useState({
+	// 	data: { name: "test korisnik", color: "green" },
+	// });
+	const [user, setUser] = useState(null);
 
 	const addMessage = (message) => {
 		setMessages((prevMessages) => {
@@ -26,12 +28,11 @@ function App() {
 
 	const onConnect = () => {
 		scaledrone.subscribeToMessages(handleReceivedMessage);
-		const userD = scaledrone.getUserId();
 		setUser({
 			...user,
 			data: {
 				...user.data,
-				id: userD,
+				id: scaledrone.getUserId(),
 			},
 		});
 	};
@@ -43,16 +44,18 @@ function App() {
 		return () => {
 			scaledrone.disconnect();
 		};
-	}, []);
+	}, [user]);
 
 	return (
 		<div className={styles.appContainer}>
-			{messages && user.data.id ? (
+			{messages && user ? (
 				<>
 					<ChatMessages messages={messages} user={user} />
 					<NewMessage sendMessageCallback={sendMessage} />
 				</>
-			) : null}
+			) : (
+				<UserLogin setUser={setUser}/>
+			)}
 		</div>
 	);
 }
