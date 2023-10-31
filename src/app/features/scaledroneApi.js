@@ -4,13 +4,14 @@ let clientInfo = {};
 const roomName = "observable-room";
 let drone;
 
-export const setUserInfo = (name, color) => {
-	clientInfo = { data: { name: name, color: color } };
+export const setUserInfo = (userInfo) => {
+	clientInfo = userInfo;
 };
 
-export const connect = () => {
+export const connect = (callback) => {
 	drone = new scaledrone(channelId, clientInfo);
 	drone.on("open", (error) => {
+		callback();
 		return error;
 	});
 };
@@ -29,4 +30,8 @@ export const publishMessage = (message) => {
 
 export const disconnect = () => {
 	drone.close();
+};
+
+export const getUserId = () => {
+	return drone.clientId;
 };
