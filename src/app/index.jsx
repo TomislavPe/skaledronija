@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import * as scaledrone from "./features/scaledroneApi";
+import { receiveMessage } from "./features/messagesSlice";
 import NewMessage from "./components/NewMessage";
 import ChatMessages from "./components/ChatMessages";
 import UserLogin from "./components/UserLogin";
 import styles from "./app.module.css";
 
 function App() {
-	const [messages, setMessages] = useState([]);
+	const messages = useSelector((state) => state.messages.messagesList);
+	const dispatch = useDispatch();
 
 	const [user, setUser] = useState({
 		data: { name: "nema korisnika", color: "red" , id: null},
@@ -14,9 +17,7 @@ function App() {
 	const [connected, setConnected] = useState(false);
 
 	const handleReceivedMessage = (message) => {
-		setMessages((prevMessages) => {
-			return [...prevMessages, message];
-		});
+		dispatch(receiveMessage(message));
 	};
 
 	const onConnect = () => {
