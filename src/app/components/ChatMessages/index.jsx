@@ -1,6 +1,9 @@
 import styles from "./ChatMessages.module.css";
+import { useSelector } from "react-redux";
 
-const ChatMessages = ({ messages, user }) => {
+const ChatMessages = () => {
+	const messages = useSelector((state) => state.messages.messagesList);
+	const userId = useSelector((state) => state.scaledrone.userId);
 	return (
 		<div className={styles.chatMessagesContainer}>
 			<ul className={styles.messageList}>
@@ -8,7 +11,7 @@ const ChatMessages = ({ messages, user }) => {
 					<li
 						key={message.id}
 						className={`${styles.message} ${
-							message.member.id == user.data.id
+							message.member.id == userId
 								? styles.rightMessage
 								: styles.leftMessage
 						}`}

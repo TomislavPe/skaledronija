@@ -9,7 +9,9 @@ const NewMessage = ({ sendMessageCallback }) => {
 	};
 
 	const handleSendMessage = (event) => {
-		sendMessageCallback(newMessage);
+		if (newMessage) {
+			sendMessageCallback(newMessage);
+		}
 		setNewMessage("");
 		event.preventDefault();
 	};

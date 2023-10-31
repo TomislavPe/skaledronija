@@ -1,20 +1,30 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+	setConnected,
+	setUserName,
+	setUserColor,
+	setUserId,
+} from "../../features/scaledroneSlice";
 
 const UserLogin = ({ login }) => {
-	const [userName, setUserName] = useState("");
-	const [userColor, setUserColor] = useState("");
+	const [userName, setUserNameLocal] = useState("");
+	const [userColor, setUserColorLocal] = useState("");
+	const dispatch = useDispatch();
 
 	const handleUserNameChange = (e) => {
-		setUserName(e.target.value);
+		setUserNameLocal(e.target.value);
 	};
 
 	const handleUserColorChange = (e) => {
-		setUserColor(e.target.value);
+		setUserColorLocal(e.target.value);
 	};
 
 	const handleLogin = () => {
 		if (userName && userColor) {
-			login(userName, userColor)
+			dispatch(setUserName(userName));
+			dispatch(setUserColor(userColor));
+			login(userName, userColor);
 		}
 	};
 
