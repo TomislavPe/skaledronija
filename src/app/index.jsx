@@ -1,21 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import * as scaledrone from "./features/scaledroneApi";
 import NewMessage from "./components/NewMessage";
 import ChatMessages from "./components/ChatMessages";
 import styles from "./app.module.css";
+import { receiveMessage } from "./features/messagesSlice";
 
 function App() {
-	const [messages, setMessages] = useState([]);
-
-	const addMessage = (message) => {
-		console.log(message)
-		setMessages((prevMessages) => {
-			return [...prevMessages, message];
-		});
-	};
+	const messages = useSelector((state) => state.messages.messagesList);
+	const dispatch = useDispatch();
 
 	const handleReceivedMessage = (message) => {
-		addMessage(message);
+		dispatch(receiveMessage(message));
 	};
 
 	const sendMessage = (message) => {
@@ -26,6 +22,7 @@ function App() {
 		scaledrone.setUserInfo("test korisnik", "green");
 		scaledrone.connect();
 		scaledrone.subscribeToMessages(handleReceivedMessage);
+		console.log("dsofh")
 
 		return () => {
 			scaledrone.disconnect();

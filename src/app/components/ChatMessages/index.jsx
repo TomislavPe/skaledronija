@@ -9,7 +9,7 @@ const ChatMessages = ({ messages }) => {
 		<div className={styles.chatMessagesContainer}>
 			<ul className={styles.messageList}>
 				{messages &&
-					testMessages.map((message) => (
+					messages.map((message) => (
 						<li
 							key={message.id}
 							className={`${styles.message} ${
