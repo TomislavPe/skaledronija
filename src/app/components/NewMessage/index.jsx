@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./NewMessage.module.css";
+import PropTypes from "prop-types";
 
 const NewMessage = ({ sendMessageCallback }) => {
 	const [newMessage, setNewMessage] = useState("");
@@ -34,6 +35,10 @@ const NewMessage = ({ sendMessageCallback }) => {
 			</form>
 		</div>
 	);
+};
+
+NewMessage.propTypes = {
+	sendMessageCallback: PropTypes.func.isRequired,
 };
 
 export default NewMessage;

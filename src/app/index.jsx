@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as scaledrone from "./features/scaledroneApi";
 import { receiveMessage } from "./features/messagesSlice";
@@ -7,6 +7,7 @@ import NewMessage from "./components/NewMessage";
 import ChatMessages from "./components/ChatMessages";
 import UserLogin from "./components/UserLogin";
 import styles from "./app.module.css";
+import PropTypes from "prop-types";
 
 function App() {
 	const connected = useSelector((state) => state.scaledrone.connected);
@@ -53,5 +54,13 @@ function App() {
 		</div>
 	);
 }
+
+App.defaultProps = {
+	connected: false,
+};
+
+App.propTypes = {
+	connected: PropTypes.bool.isRequired,
+};
 
 export default App;

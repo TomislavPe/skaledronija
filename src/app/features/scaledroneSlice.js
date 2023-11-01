@@ -4,7 +4,7 @@ const initialState = {
 	connected: false,
 	userName: "nema korisnika",
 	userColor: "red",
-	userId: null,
+	userId: "",
 };
 
 export const scaledroneSlice = createSlice({

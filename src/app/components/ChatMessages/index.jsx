@@ -1,5 +1,6 @@
-import styles from "./ChatMessages.module.css";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
+import styles from "./ChatMessages.module.css";
 
 const ChatMessages = () => {
 	const messages = useSelector((state) => state.messages.messagesList);
@@ -17,15 +18,21 @@ const ChatMessages = () => {
 				{messages.map((message) => (
 					<li
 						key={message.id}
-						className={`${styles.message} ${getMessageStyle(message)}`}
+						className={`${styles.message} ${getMessageStyle(
+							message
+						)}`}
 					>
 						<div
-							className={`${styles.userName} ${getMessageStyle(message)}`}
+							className={`${styles.userName} ${getMessageStyle(
+								message
+							)}`}
 						>
 							{message.member.clientData.name}
 						</div>
 						<div
-							className={`${styles.messageContent} ${getMessageStyle(message)}`}
+							className={`${
+								styles.messageContent
+							} ${getMessageStyle(message)}`}
 							style={{
 								backgroundColor:
 									message.member.clientData.color,
@@ -38,6 +45,16 @@ const ChatMessages = () => {
 			</ul>
 		</div>
 	);
+};
+
+ChatMessages.defaultProps = {
+	messages: [],
+	userId: "",
+};
+
+ChatMessages.propTypes = {
+	messages: PropTypes.array.isRequired,
+	userId: PropTypes.string.isRequired,
 };
 
 export default ChatMessages;
