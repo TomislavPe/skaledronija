@@ -2,11 +2,15 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUserName, setUserColor } from "../../features/scaledroneSlice";
 import styles from "./UserLogin.module.css";
-import { colorOptions, getRandomName , invertRGBColor} from "../../features/loginOptions";
+import {
+	colorOptions,
+	getRandomName,
+	invertRGBColor,
+} from "../../features/loginOptions";
 
 const UserLogin = ({ login }) => {
 	const [userName, setUserNameLocal] = useState("");
-	const [userColor, setUserColorLocal] = useState('rgb(255, 0, 0)');
+	const [userColor, setUserColorLocal] = useState("rgb(255, 0, 0)");
 	const [loading, setLoading] = useState(false);
 	const [colorIndex, setColorIndex] = useState(0);
 	const dispatch = useDispatch();
@@ -17,6 +21,13 @@ const UserLogin = ({ login }) => {
 
 	const handleUserColorChange = (e) => {
 		setUserColorLocal(e.target.value);
+		const selectedIndex = colorOptions.findIndex(
+			(option) => option.value === e.target.value
+		);
+
+		if (selectedIndex !== -1) {
+			setColorIndex(selectedIndex);
+		}
 	};
 
 	const handleLogin = () => {
@@ -64,7 +75,11 @@ const UserLogin = ({ login }) => {
 								id="userColor"
 								value={colorOptions[colorIndex].value}
 								onChange={handleUserColorChange}
-								style={{ backgroundColor: userColor, color: invertRGBColor(userColor), fontSize: "1rem" }}
+								style={{
+									backgroundColor: userColor,
+									color: invertRGBColor(userColor),
+									fontSize: "1rem",
+								}}
 							>
 								{colorOptions.map((option) => (
 									<option
