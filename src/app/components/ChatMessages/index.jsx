@@ -1,10 +1,13 @@
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./ChatMessages.module.css";
+import { useRef, useEffect } from "react";
 
 const ChatMessages = () => {
 	const messages = useSelector((state) => state.messages.messagesList);
 	const userId = useSelector((state) => state.scaledrone.userId);
+
+	const lastMessageRef = useRef(null);
 
 	const getMessageStyle = (message) => {
 		return message.member.id == userId
@@ -20,12 +23,19 @@ const ChatMessages = () => {
 		return invertedColor;
 	}
 
+	useEffect(() => {
+		if (lastMessageRef.current) {
+		  lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+		}
+	  }, [messages]);
+
 	return (
 		<div className={styles.chatMessagesContainer}>
 			<ul className={styles.messageList}>
-				{messages.map((message) => (
+				{messages.map((message, index) => (
 					<li
 						key={message.id}
+						ref={index === messages.length - 1 ? lastMessageRef : null}
 						className={`${styles.message} ${getMessageStyle(
 							message
 						)}`}
