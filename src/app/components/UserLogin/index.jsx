@@ -7,6 +7,7 @@ const UserLogin = ({ login }) => {
 	const [userName, setUserNameLocal] = useState("");
 	const [userColor, setUserColorLocal] = useState("");
 	const [loading, setLoading] = useState(false);
+	const [colorIndex, setColorIndex] = useState(0);
 	const dispatch = useDispatch();
 
 	const handleUserNameChange = (e) => {
@@ -24,6 +25,12 @@ const UserLogin = ({ login }) => {
 			dispatch(setUserColor(userColor));
 			login(userName, userColor);
 		}
+	};
+
+	const handleRandomizeColor = () => {
+		const randomIndex = Math.floor(Math.random() * colorOptions.length);
+		setUserColorLocal(colorOptions[randomIndex].value);
+		setColorIndex(randomIndex);
 	};
 
 	const colorOptions = [
@@ -62,19 +69,9 @@ const UserLogin = ({ login }) => {
 						<div className={styles.formControl}>
 							<select
 								id="userColor"
-								value={userColor}
+								value={colorOptions[colorIndex].value}
 								onChange={handleUserColorChange}
 							>
-								{/* <option value="">Odaberite boju</option>
-								<option value="red">Crvena</option>
-								<option value="blue">Plava</option>
-								<option value="green">Zelena</option>
-								<option value="yellow">Žuta</option>
-								<option value="orange">Narančasta</option>
-								<option value="purple">Ljubičasta</option>
-								<option value="pink">Roza</option>
-								<option value="brown">Smeđa</option>
-								<option value="grey">Siva</option> */}
 								{colorOptions.map((option) => (
 									<option
 										key={option.value}
@@ -85,6 +82,12 @@ const UserLogin = ({ login }) => {
 								))}
 							</select>
 						</div>
+						<button
+							className={styles.button}
+							onClick={handleRandomizeColor}
+						>
+							Random Boja
+						</button>
 						<button
 							className={styles.button}
 							onClick={handleLogin}
