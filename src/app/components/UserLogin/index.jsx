@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUserName, setUserColor } from "../../features/scaledroneSlice";
 import styles from "./UserLogin.module.css";
+import { colorOptions, getRandomName } from "../../features/loginOptions";
 
 const UserLogin = ({ login }) => {
 	const [userName, setUserNameLocal] = useState("");
@@ -33,18 +34,17 @@ const UserLogin = ({ login }) => {
 		setColorIndex(randomIndex);
 	};
 
-	const colorOptions = [
-		{ name: "Odaberite boju", value: "" },
-		{ name: "Crvena", value: "rgb(255, 0, 0)" },
-		{ name: "Plava", value: "rgb(0, 0, 255)" },
-		{ name: "Zelena", value: "rgb(0, 128, 0)" },
-		{ name: "Žuta", value: "rgb(255, 255, 0)" },
-		{ name: "Narančasta", value: "rgb(255, 165, 0)" },
-		{ name: "Ljubičasta", value: "rgb(128, 0, 128)" },
-		{ name: "Roza", value: "rgb(255, 192, 203)" },
-		{ name: "Smeđa", value: "rgb(139, 69, 19)" },
-		{ name: "Siva", value: "rgb(128, 128, 128)" },
-	];
+	const handleRandomizeUser = () => {
+		setUserNameLocal(getRandomName());
+	};
+
+	function invertRGBColor(rgbString) {
+		const rgbValues = rgbString.slice(4, -1).split(",").map(Number);
+		const invertedValues = rgbValues.map((value) => 255 - value);
+		const invertedColor = `rgb(${invertedValues[0]}, ${invertedValues[1]}, ${invertedValues[2]})`;
+
+		return invertedColor;
+	}
 
 	return (
 		<div className={styles.centerContainer}>
@@ -63,6 +63,7 @@ const UserLogin = ({ login }) => {
 								id="userName"
 								value={userName}
 								onChange={handleUserNameChange}
+								style={{ fontSize: "1rem" }}
 							/>
 						</div>
 						<label htmlFor="userColor">Boja Korisnika: </label>
@@ -71,6 +72,7 @@ const UserLogin = ({ login }) => {
 								id="userColor"
 								value={colorOptions[colorIndex].value}
 								onChange={handleUserColorChange}
+								style={{ backgroundColor: userColor, color: invertRGBColor(userColor), fontSize: "1rem" }}
 							>
 								{colorOptions.map((option) => (
 									<option
@@ -82,12 +84,20 @@ const UserLogin = ({ login }) => {
 								))}
 							</select>
 						</div>
-						<button
-							className={styles.button}
-							onClick={handleRandomizeColor}
-						>
-							Random Boja
-						</button>
+						<div>
+							<button
+								className={styles.button}
+								onClick={handleRandomizeColor}
+							>
+								Random Boja
+							</button>
+							<button
+								className={styles.button}
+								onClick={handleRandomizeUser}
+							>
+								Random Korisnik
+							</button>
+						</div>
 						<button
 							className={styles.button}
 							onClick={handleLogin}
