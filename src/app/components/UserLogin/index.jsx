@@ -10,7 +10,7 @@ import {
 
 const UserLogin = ({ login }) => {
 	const [userName, setUserNameLocal] = useState("");
-	const [userColor, setUserColorLocal] = useState("rgb(255, 0, 0)");
+	const [userColor, setUserColorLocal] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [colorIndex, setColorIndex] = useState(0);
 	const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const UserLogin = ({ login }) => {
 	};
 
 	const handleRandomizeColor = () => {
-		const randomIndex = Math.floor(Math.random() * colorOptions.length);
+		const randomIndex = Math.floor(Math.random() * colorOptions.length + 1);
 		setUserColorLocal(colorOptions[randomIndex].value);
 		setColorIndex(randomIndex);
 	};

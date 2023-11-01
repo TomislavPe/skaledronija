@@ -1,4 +1,5 @@
 const colorOptions = [
+	{ name: "Izaberite boju", value: "" },
 	{ name: "Crvena", value: "rgb(255, 0, 0)" },
 	{ name: "Plava", value: "rgb(0, 0, 255)" },
 	{ name: "Zelena", value: "rgb(0, 128, 0)" },
@@ -173,7 +174,7 @@ function getRandomName() {
 function invertRGBColor(rgbColor) {
 	const match = rgbColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
 	if (!match) {
-		throw new Error("Invalid RGB color format");
+		return "black"
 	}
 
 	const r = parseInt(match[1]);
