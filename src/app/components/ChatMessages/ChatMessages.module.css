@@ -21,6 +21,7 @@
 .message {
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 10px;
 }
 
 .leftMessage {
@@ -40,7 +41,8 @@
 	margin-bottom: 10px;
 	padding: 10px;
 	border-radius: 10px;
-	max-width: 50%;
+	min-width: 20vw;
+	max-width: 80vw;
 	margin-top: 5px;
 	overflow: hidden;
 	width: fit-content;
