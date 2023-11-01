@@ -26,6 +26,19 @@ const UserLogin = ({ login }) => {
 		}
 	};
 
+	const colorOptions = [
+		{ name: "Odaberite boju", value: "" },
+		{ name: "Crvena", value: "rgb(255, 0, 0)" },
+		{ name: "Plava", value: "rgb(0, 0, 255)" },
+		{ name: "Zelena", value: "rgb(0, 128, 0)" },
+		{ name: "Žuta", value: "rgb(255, 255, 0)" },
+		{ name: "Narančasta", value: "rgb(255, 165, 0)" },
+		{ name: "Ljubičasta", value: "rgb(128, 0, 128)" },
+		{ name: "Roza", value: "rgb(255, 192, 203)" },
+		{ name: "Smeđa", value: "rgb(139, 69, 19)" },
+		{ name: "Siva", value: "rgb(128, 128, 128)" },
+	];
+
 	return (
 		<div className={styles.centerContainer}>
 			{loading ? (
@@ -52,7 +65,7 @@ const UserLogin = ({ login }) => {
 								value={userColor}
 								onChange={handleUserColorChange}
 							>
-								<option value="">Odaberite boju</option>
+								{/* <option value="">Odaberite boju</option>
 								<option value="red">Crvena</option>
 								<option value="blue">Plava</option>
 								<option value="green">Zelena</option>
@@ -61,7 +74,15 @@ const UserLogin = ({ login }) => {
 								<option value="purple">Ljubičasta</option>
 								<option value="pink">Roza</option>
 								<option value="brown">Smeđa</option>
-								<option value="grey">Siva</option>
+								<option value="grey">Siva</option> */}
+								{colorOptions.map((option) => (
+									<option
+										key={option.value}
+										value={option.value}
+									>
+										{option.name}
+									</option>
+								))}
 							</select>
 						</div>
 						<button

@@ -12,6 +12,14 @@ const ChatMessages = () => {
 			: styles.leftMessage;
 	};
 
+	function invertRGBColor(rgbString) {
+		const rgbValues = rgbString.slice(4, -1).split(",").map(Number);
+		const invertedValues = rgbValues.map((value) => 255 - value);
+		const invertedColor = `rgb(${invertedValues[0]}, ${invertedValues[1]}, ${invertedValues[2]})`;
+
+		return invertedColor;
+	}
+
 	return (
 		<div className={styles.chatMessagesContainer}>
 			<ul className={styles.messageList}>
@@ -38,7 +46,15 @@ const ChatMessages = () => {
 									message.member.clientData.color,
 							}}
 						>
-							{message.data}
+							<div
+								style={{
+									color: invertRGBColor(
+										message.member.clientData.color
+									),
+								}}
+							>
+								{message.data}
+							</div>
 						</div>
 					</li>
 				))}
