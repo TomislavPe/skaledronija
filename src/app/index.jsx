@@ -12,10 +12,6 @@ function App() {
 	const connected = useSelector((state) => state.scaledrone.connected);
 	const dispatch = useDispatch();
 
-	const [user, setUser] = useState({
-		data: { name: "nema korisnika", color: "red", id: null },
-	});
-
 	const handleReceivedMessage = (message) => {
 		dispatch(receiveMessage(message));
 	};

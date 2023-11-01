@@ -11,18 +11,16 @@
 }
 
 .messageList {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
 	padding: 0;
 }
 
 .message {
-	margin-bottom: 10px;
-	padding: 10px;
-	border-radius: 10px;
-	max-width: 70%;
-  color: white;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 .leftMessage {
@@ -38,5 +36,10 @@
 }
 
 .messageContent {
+	border: 3px solid darkgray;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	max-width: 70%;
 	margin-top: 5px;
 }

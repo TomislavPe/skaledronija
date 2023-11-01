@@ -15,14 +15,17 @@ const ChatMessages = () => {
 								? styles.rightMessage
 								: styles.leftMessage
 						}`}
-						style={{
-							backgroundColor: message.member.clientData.color,
-						}}
 					>
 						<div className={styles.userName}>
 							{message.member.clientData.name}
 						</div>
-						<div className={styles.messageContent}>
+						<div
+							className={styles.messageContent}
+							style={{
+								backgroundColor:
+									message.member.clientData.color,
+							}}
+						>
 							{message.data}
 						</div>
 					</li>
