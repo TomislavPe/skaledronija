@@ -62,7 +62,6 @@ const UserLogin = ({ login }) => {
 								<option value="pink">Roza</option>
 								<option value="brown">Smeđa</option>
 								<option value="grey">Siva</option>
-								<option value="black">Crna</option>
 							</select>
 						</div>
 						<button
