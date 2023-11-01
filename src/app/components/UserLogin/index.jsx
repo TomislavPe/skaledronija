@@ -65,8 +65,9 @@ const UserLogin = ({ login }) => {
 								type="text"
 								id="userName"
 								value={userName}
+								className={styles.formInput}
 								onChange={handleUserNameChange}
-								style={{ fontSize: "1rem" }}
+								
 							/>
 						</div>
 						<label htmlFor="userColor">Boja Korisnika: </label>
@@ -74,11 +75,11 @@ const UserLogin = ({ login }) => {
 							<select
 								id="userColor"
 								value={colorOptions[colorIndex].value}
+								className={styles.formInput}
 								onChange={handleUserColorChange}
 								style={{
 									backgroundColor: userColor,
 									color: invertRGBColor(userColor),
-									fontSize: "1rem",
 								}}
 							>
 								{colorOptions.map((option) => (
