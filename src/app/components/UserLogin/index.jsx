@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUserName, setUserColor } from "../../features/scaledroneSlice";
 import styles from "./UserLogin.module.css";
-import { colorOptions, getRandomName } from "../../features/loginOptions";
+import { colorOptions, getRandomName , invertRGBColor} from "../../features/loginOptions";
 
 const UserLogin = ({ login }) => {
 	const [userName, setUserNameLocal] = useState("");
-	const [userColor, setUserColorLocal] = useState("");
+	const [userColor, setUserColorLocal] = useState('rgb(255, 0, 0)');
 	const [loading, setLoading] = useState(false);
 	const [colorIndex, setColorIndex] = useState(0);
 	const dispatch = useDispatch();
@@ -37,14 +37,6 @@ const UserLogin = ({ login }) => {
 	const handleRandomizeUser = () => {
 		setUserNameLocal(getRandomName());
 	};
-
-	function invertRGBColor(rgbString) {
-		const rgbValues = rgbString.slice(4, -1).split(",").map(Number);
-		const invertedValues = rgbValues.map((value) => 255 - value);
-		const invertedColor = `rgb(${invertedValues[0]}, ${invertedValues[1]}, ${invertedValues[2]})`;
-
-		return invertedColor;
-	}
 
 	return (
 		<div className={styles.centerContainer}>

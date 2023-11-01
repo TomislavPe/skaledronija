@@ -2,6 +2,11 @@ import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import styles from "./ChatMessages.module.css";
 import { useRef, useEffect } from "react";
+import {
+	colorOptions,
+	getRandomName,
+	invertRGBColor,
+} from "../../features/loginOptions";
 
 const ChatMessages = () => {
 	const messages = useSelector((state) => state.messages.messagesList);
@@ -15,19 +20,11 @@ const ChatMessages = () => {
 			: styles.leftMessage;
 	};
 
-	function invertRGBColor(rgbString) {
-		const rgbValues = rgbString.slice(4, -1).split(",").map(Number);
-		const invertedValues = rgbValues.map((value) => 255 - value);
-		const invertedColor = `rgb(${invertedValues[0]}, ${invertedValues[1]}, ${invertedValues[2]})`;
-
-		return invertedColor;
-	}
-
 	useEffect(() => {
 		if (lastMessageRef.current) {
-		  lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+			lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
 		}
-	  }, [messages]);
+	}, [messages]);
 
 	return (
 		<div className={styles.chatMessagesContainer}>
@@ -35,7 +32,11 @@ const ChatMessages = () => {
 				{messages.map((message, index) => (
 					<li
 						key={message.id}
-						ref={index === messages.length - 1 ? lastMessageRef : null}
+						ref={
+							index === messages.length - 1
+								? lastMessageRef
+								: null
+						}
 						className={`${styles.message} ${getMessageStyle(
 							message
 						)}`}

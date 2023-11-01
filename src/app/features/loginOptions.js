@@ -1,34 +1,34 @@
 const colorOptions = [
-    { name: "Crvena", value: "rgb(255, 0, 0)" },
-    { name: "Plava", value: "rgb(0, 0, 255)" },
-    { name: "Zelena", value: "rgb(0, 128, 0)" },
-    { name: "Žuta", value: "rgb(255, 255, 0)" },
-    { name: "Narančasta", value: "rgb(255, 165, 0)" },
-    { name: "Ljubičasta", value: "rgb(128, 0, 128)" },
-    { name: "Roza", value: "rgb(255, 192, 203)" },
-    { name: "Smeđa", value: "rgb(139, 69, 19)" },
-    { name: "Siva", value: "rgb(128, 128, 128)" },
-    { name: "Crna", value: "rgb(0, 0, 0)" },
-    { name: "Bijela", value: "rgb(255, 255, 255)" },
-    { name: "Svijetlo Crvena", value: "rgb(255, 99, 71)" },
-    { name: "Svijetlo Plava", value: "rgb(173, 216, 230)" },
-    { name: "Svijetlo Zelena", value: "rgb(144, 238, 144)" },
-    { name: "Svijetlo Žuta", value: "rgb(255, 255, 102)" },
-    { name: "Svijetlo Narančasta", value: "rgb(255, 179, 71)" },
-    { name: "Svijetlo Ljubičasta", value: "rgb(218, 112, 214)" },
-    { name: "Svijetlo Roza", value: "rgb(255, 182, 193)" },
-    { name: "Svijetlo Smeđa", value: "rgb(205, 133, 63)" },
-    { name: "Svijetlo Siva", value: "rgb(192, 192, 192)" },
-    { name: "Tamno Crvena", value: "rgb(139, 0, 0)" },
-    { name: "Tamno Plava", value: "rgb(0, 0, 139)" },
-    { name: "Tamno Zelena", value: "rgb(0, 100, 0)" },
-    { name: "Tamno Žuta", value: "rgb(128, 128, 0)" },
-    { name: "Tamno Narančasta", value: "rgb(255, 100, 0)" },
-    { name: "Tamno Ljubičasta", value: "rgb(75, 0, 130)" },
-    { name: "Tamno Roza", value: "rgb(255, 20, 147)" },
-    { name: "Tamno Smeđa", value: "rgb(101, 67, 33)" },
-    { name: "Tamno Siva", value: "rgb(96, 96, 96)" },
-  ];
+	{ name: "Crvena", value: "rgb(255, 0, 0)" },
+	{ name: "Plava", value: "rgb(0, 0, 255)" },
+	{ name: "Zelena", value: "rgb(0, 128, 0)" },
+	{ name: "Žuta", value: "rgb(255, 255, 0)" },
+	{ name: "Narančasta", value: "rgb(255, 165, 0)" },
+	{ name: "Ljubičasta", value: "rgb(128, 0, 128)" },
+	{ name: "Roza", value: "rgb(255, 192, 203)" },
+	{ name: "Smeđa", value: "rgb(139, 69, 19)" },
+	{ name: "Siva", value: "rgb(128, 128, 128)" },
+	{ name: "Crna", value: "rgb(0, 0, 0)" },
+	{ name: "Bijela", value: "rgb(255, 255, 255)" },
+	{ name: "Svijetlo Crvena", value: "rgb(255, 99, 71)" },
+	{ name: "Svijetlo Plava", value: "rgb(173, 216, 230)" },
+	{ name: "Svijetlo Zelena", value: "rgb(144, 238, 144)" },
+	{ name: "Svijetlo Žuta", value: "rgb(255, 255, 102)" },
+	{ name: "Svijetlo Narančasta", value: "rgb(255, 179, 71)" },
+	{ name: "Svijetlo Ljubičasta", value: "rgb(218, 112, 214)" },
+	{ name: "Svijetlo Roza", value: "rgb(255, 182, 193)" },
+	{ name: "Svijetlo Smeđa", value: "rgb(205, 133, 63)" },
+	{ name: "Svijetlo Siva", value: "rgb(192, 192, 192)" },
+	{ name: "Tamno Crvena", value: "rgb(139, 0, 0)" },
+	{ name: "Tamno Plava", value: "rgb(0, 0, 139)" },
+	{ name: "Tamno Zelena", value: "rgb(0, 100, 0)" },
+	{ name: "Tamno Žuta", value: "rgb(128, 128, 0)" },
+	{ name: "Tamno Narančasta", value: "rgb(255, 100, 0)" },
+	{ name: "Tamno Ljubičasta", value: "rgb(75, 0, 130)" },
+	{ name: "Tamno Roza", value: "rgb(255, 20, 147)" },
+	{ name: "Tamno Smeđa", value: "rgb(101, 67, 33)" },
+	{ name: "Tamno Siva", value: "rgb(96, 96, 96)" },
+];
 
 function getRandomName() {
 	const adjs = [
@@ -170,4 +170,18 @@ function getRandomName() {
 	);
 }
 
-export { colorOptions, getRandomName };
+function invertRGBColor(rgbColor) {
+	const match = rgbColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+	if (!match) {
+		throw new Error("Invalid RGB color format");
+	}
+
+	const r = parseInt(match[1]);
+	const g = parseInt(match[2]);
+	const b = parseInt(match[3]);
+	const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+	return luminance > 0.5 ? "black" : "white";
+}
+
+export { colorOptions, getRandomName, invertRGBColor };

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	connected: false,
 	userName: "nema korisnika",
-	userColor: "red",
+	userColor: 'rgb(255, 0, 0)',
 	userId: "",
 };
 
