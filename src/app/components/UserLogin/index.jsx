@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 import { setUserName, setUserColor } from "../../features/scaledroneSlice";
 import styles from "./UserLogin.module.css";
 import {
@@ -67,7 +68,6 @@ const UserLogin = ({ login }) => {
 								value={userName}
 								className={styles.formInput}
 								onChange={handleUserNameChange}
-								
 							/>
 						</div>
 						<label htmlFor="userColor">Boja Korisnika: </label>
@@ -118,6 +118,10 @@ const UserLogin = ({ login }) => {
 			)}
 		</div>
 	);
+};
+
+UserLogin.propTypes = {
+	login: PropTypes.func.isRequired,
 };
 
 export default UserLogin;

@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import styles from "./ChatMessages.module.css";
 import { useRef, useEffect } from "react";
 import {
-	colorOptions,
-	getRandomName,
 	invertRGBColor,
 } from "../../features/loginOptions";
 
