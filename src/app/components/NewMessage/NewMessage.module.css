@@ -21,6 +21,7 @@
 	flex: 1;
 	padding: 10px;
 	border-radius: 10px;
+	font-size: 1.2rem;
 }
 
 .button {
@@ -28,5 +29,5 @@
 	border-radius: 10px;
 	width: auto;
 	max-width: 100px;
-	font-size: 1rem;
+	font-size: 1.2rem;
 }

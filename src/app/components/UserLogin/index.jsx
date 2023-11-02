@@ -42,7 +42,9 @@ const UserLogin = ({ login }) => {
 
 	const handleRandomizeColor = () => {
 		const randomIndex = Math.floor(Math.random() * colorOptions.length + 1);
-		setUserColorLocal(colorOptions[randomIndex].value);
+		if (colorOptions[randomIndex]) {
+			setUserColorLocal(colorOptions[randomIndex].value);
+		}
 		setColorIndex(randomIndex);
 	};
 
