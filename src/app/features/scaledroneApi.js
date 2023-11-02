@@ -29,7 +29,9 @@ export const publishMessage = (message) => {
 };
 
 export const disconnect = () => {
-	drone.close();
+	if (drone) {
+		drone.close();
+	}
 };
 
 export const getUserId = () => {

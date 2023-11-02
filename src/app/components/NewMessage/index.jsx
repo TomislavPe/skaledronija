@@ -29,7 +29,7 @@ const NewMessage = ({ sendMessageCallback }) => {
 						className={styles.formControl}
 					/>
 					<button type="submit" className={styles.button}>
-						Pošalji
+						Poslati
 					</button>
 				</div>
 			</form>
